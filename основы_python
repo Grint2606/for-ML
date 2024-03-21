@@ -1,0 +1,165 @@
+Задача 1
+def get_vowels_count(string):
+    vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+    vowels_count = 0
+    if isinstance(string, str):
+        string = string.lower()
+        for symbol in string:
+            vowels_count += symbol in vowels
+    return vowels_count
+
+def test_task(object, required_count):
+    vowels_count = get_vowels_count(object)
+    return vowels_count == required_count
+
+def test_1():
+    return test_task('kmntr', 0) # all not vowels
+
+def test_2():
+    return test_task('aeiouy', 6) # all letter vowels 
+
+def test_3():
+    return test_task(82375, 0) # no letters
+
+def test_4():
+    return test_task('JWKFG', 0) # no vowels in capitalized string
+
+print(test_1())  # True
+print(test_2())  # True
+print(test_3())  # True
+print(test_4())  # True
+
+задача 2
+def every_symbol_are_single(string):
+    if not isinstance(string, str):
+        return False
+    symbols_seen = set()
+    for symbol in string:
+        if symbol in symbols_seen:
+            return False
+        symbols_seen.add(symbol)
+    return True
+
+def test_task(object, required_bool):
+    return required_bool == every_symbol_are_single(object)
+
+def test_1():  # symbols not single
+    return test_task('aabbbb', False)
+
+def test_2():  # every symbol is single
+    return test_task('kdfsvt', True)
+
+def test_3():
+    return test_task(12345, False)  # no letters
+
+print(test_1())  # False
+print(test_2())  # True
+print(test_3())  # False
+
+
+
+
+задача 3
+
+def get_bits_count(number):
+    bits_count = 0
+    while number:
+        bits_count += number & 1
+        number >>= 1
+    return bits_count
+
+def test_task(object, required_count):
+    return required_count == get_bits_count(object)
+
+def test_1():
+    return test_task(0, 0)
+
+def test_2():
+    return test_task(44, 4)
+
+def test_3():
+    return test_task(3257, 7)
+print(test_1())
+print(test_2())
+print(test_3())
+
+
+
+задача 4
+
+
+def digits_product(number):
+    result = 1
+    while number > 0:
+        result *= number % 10
+        number //= 10
+    return result
+
+def get_digits_product(number):
+    multiplication_count = 0
+    while number > 9:
+        number = multiplicate_digits(number)
+        multiplication_count += 1
+    return multiplication_count
+
+def test_get_multiplication_count():
+
+def test_1(123) == 1
+def test_2(100) == 1
+def test_3(456) == 2
+
+print(test_1())
+print(test_2())
+print(test_3())
+
+
+
+задача 5
+
+
+def mean_square_difference(observed, predicted):
+    squared_errors_sum = 0
+    length = len(observed)
+    for i in range(length):
+        squared_errors_sum += (observed[i] - predicted[i]) ** 2
+    return squared_errors_sum / length
+
+def test_task(observed, predicted, required_mse):
+    return required_mse == mean_square_difference(observed, predicted)
+
+def test_1():
+    return test_task_5([1, 1, 1], [2, 2, 2], 1)
+
+def test_2():
+    return test_task_5([10, 20, 30], [15, 25, 35], 25)
+
+print(test_1())
+print(test_2())
+
+задача 6 - 
+
+
+
+задача 7 
+IMPOSSIBLE_RESULT = "It's impossible"
+
+def pyramid(number):
+    progression_number = int((2 * number) ** 0.5)
+    sum = progression_number * (progression_number + 1) * (2 * progression_number + 1) // 6
+    return progression_number if sum == number else IMPOSSIBLE_RESULT
+
+def test_task(actual, expected):
+    return actual == expected
+
+def test_1():
+    return test_task(pyramid(14), IMPOSSIBLE_RESULT)
+
+def test_2():
+    return test_task(pyramid(55), 5)
+
+print(test_1())
+print(test_2())
+
+
+
+задача 8 -
