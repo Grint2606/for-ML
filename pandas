@@ -1,0 +1,12 @@
+!pip install pandas
+import pandas as pd
+
+titanic_data = pd.read_csv("https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv") # Загружаем данные из дата сета
+missing_values = titanic_data.isna().sum() # Подсчитываем пропущенные значения
+titanic_data_added = titanic_data.fillna(0) # Заполнение пропущенные значений нулями
+print(titanic_data_added.head(10)) # Выводим первые 10 строк 
+
+filtered_data = titanic_data_added[titanic_data_added['Age'] > 30] # Выбираем строки, где значение в столбце 'Age' больше 30
+sorted_data = filtered_data.sort_values(by='Fare', ascending=False) # Сортируем  данные по столбцу 'Fare' в порядке убывания
+medium_age = titanic_data_added.groupby('Pclass')['Age'].mean() #Группируем данные по столбцу 'Pclass' и вычисляем средний возраст ('Age') для каждого класса
+print(medium_age) #Выводим средний возраст для классов
